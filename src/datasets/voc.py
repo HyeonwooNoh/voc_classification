@@ -53,7 +53,7 @@ def _GetObjectAnnotation(voc_devkit_dir, voc_version, image_id):
 def _LoadImage(voc_devkit_dir, voc_version, image_id):
 	voc_data_dir = os.path.join(voc_devkit_dir, voc_version)
 	image_path = os.path.join(voc_data_dir, _VOC_PATHS['image_path'] % image_id)
-	return Image.open(image_path).convert('RGB')	
+	return Image.open(image_path).convert('RGB')
 
 class VocClassification(data.Dataset):
 
@@ -79,6 +79,9 @@ class VocClassification(data.Dataset):
 		self.num_classes = len(self.classes)
 
 		self.onehot_labels = self.GetOnehotLabels()
+
+	def __len__(self):
+		return self.num_examples
 
 	def __getitem__(self, index):
 		image = _LoadImage(self.voc_devkit_dir, self.voc_version,

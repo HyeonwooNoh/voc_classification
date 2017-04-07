@@ -3,3 +3,4 @@ data/VOCdevkit
 
 # Extension
 *.swp
+__pycache__
