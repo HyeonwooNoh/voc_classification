@@ -36,6 +36,9 @@ $ deactivate <name of env>
 # for pytorch type bellow:
 $ conda create -n pytorch-py3 python=3.5 numpy scipy matplotlib sphinx nose pillow jupyter nltk tqdm h5py pyyaml
 $ source activate pytorch-py3
+
+# Install packages from other channels
+conda install -c conda-forge xmltodict=0.10.2
 ```
 
 1. Install pytorch
