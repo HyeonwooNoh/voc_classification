@@ -87,6 +87,7 @@ class VocClassification(data.Dataset):
 		image = _LoadImage(self.voc_devkit_dir, self.voc_version,
 			self.image_set[index])
 		target = self.onehot_labels[index]
+		image_id = self.image_set[index]
 
 		if self.transform is not None:
 			image = self.transform(image)	
@@ -94,10 +95,11 @@ class VocClassification(data.Dataset):
 		if self.target_transform is not None:
 			target = self.target_transform(target)
 
-		return image, target
+		return image, target, image_id
 
 	def GetOnehotLabels(self):
-		onehot_labels = np.zeros((self.num_examples, self.num_classes))
+		onehot_labels = np.zeros((self.num_examples, self.num_classes),
+			dtype=np.float32)
 		for i, image_id in enumerate(self.image_set):
 			object_annotations = _GetObjectAnnotation(self.voc_devkit_dir,
 				self.voc_version, image_id)
