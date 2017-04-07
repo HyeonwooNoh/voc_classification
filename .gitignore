@@ -1,2 +1,5 @@
-# data
+# Data
 data/VOCdevkit
+
+# Extension
+*.swp
