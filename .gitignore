@@ -1,6 +1,9 @@
 # Data
 data/VOCdevkit
 
+# Results of experiments
+results
+
 # Extension
 *.swp
 __pycache__
