@@ -77,8 +77,8 @@ class VocEvaluateClassification():
 			average_precision, precisions, recalls =\
 				self.EvaluateClass(cls, cls_results[cls])
 			average_precision_summary[cls] = average_precision
-			precisions_summary[cls] = precisions_summary
-			recalls_summary[cls] = recalls_summary
+			precisions_summary[cls] = precisions
+			recalls_summary[cls] = recalls
 
 		meanAP = np.array(list(average_precision_summary.values())).mean()
 		evaluation_summarys = {
@@ -124,7 +124,8 @@ class VocEvaluateClassification():
 			else:
 				max_precision = 0
 			average_precision = average_precision + max_precision/11;
-		return average_precision, precisions, recalls
+		# Return precisions and recalls as lists for easier serialization.
+		return average_precision, list(precisions), list(recalls)
 						
 voc_devkit_dir = 'data/VOCdevkit'
 voc_version = 'VOC2007'
